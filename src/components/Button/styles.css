@@ -1,0 +1,14 @@
+.pagination {
+  margin-top: 2vw;
+  margin-left: 15.5vw;
+  color: aqua;
+  font-size: 2rem;
+  font-weight: bold;
+  border: 0;
+}
+
+.pagination:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  color: darkblue;
+}
