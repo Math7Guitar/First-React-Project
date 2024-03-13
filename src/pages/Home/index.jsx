@@ -32,7 +32,7 @@ export class Home extends Component {
       });
     } else {
       this.setState({
-        posts: this.state.posts.filter(post => { return post.title.includes(this.state.search) || post.body.includes(this.state.search) }),
+        posts: this.state.posts.filter(post => { return post.title.toLowerCase().includes(this.state.search.toLowerCase()) || post.body.toLowerCase().includes(this.state.search.toLowerCase()) }),
         allPosts: postsAndPhotos
       })
     }
