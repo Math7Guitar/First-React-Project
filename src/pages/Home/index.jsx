@@ -27,7 +27,7 @@ export class Home extends Component {
 
     if(this.state.search === "") {
       this.setState({
-        posts: postsAndPhotos.slice(this.state.start, this.state.start + 9),
+        posts: postsAndPhotos.slice((prevState) => { return { start: prevState.start } }, (prevState) => { return { start: prevState.start + 9 } }),
         allPosts: postsAndPhotos
       });
     } else {
@@ -40,18 +40,18 @@ export class Home extends Component {
 
   nextPage = () => {
     this.setState({
-      start: this.state.start + 9,
+      start: (pS) => { return { start: pS.start + 9 } },
       search: ""
     });
-    console.log(this.state.start);
+    console.log((pS) => { return { start: pS.start } });
   }
 
   previousPage = () => {
     this.setState({
-      start: this.state.start - 9,
+      start: (pS) => { return { start: pS.start - 9 } },
       search: ""
     })
-    console.log(this.state.start);
+    console.log((pS) => { return { start: pS.start } });
   } 
 
   handleChange = (search) => {
@@ -65,7 +65,7 @@ export class Home extends Component {
     
     return (
       <section className="container">
-        <input type="search" className="search" onChange={ (e) => this.handleChange(e.target.value) } value={ this.state.search } placeholder='Search' />
+        <input type="search" className="search" onChange={ (e) => this.handleChange(e.target.value) } value={ (pS) => { return { search: pS.search } } } placeholder='Search' />
         <Posts posts={ posts }/>
         <Button text={ "Anterior" } method={ this.previousPage }/>
         <Button text={ "Proxima" } method={ this.nextPage }/>
