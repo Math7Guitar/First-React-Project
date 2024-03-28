@@ -1,4 +1,6 @@
+/* eslint-disable react/react-in-jsx-scope */
 import './styles.css';
+import P from 'prop-types';
 
 export const PostCard = ({ post }) => (
     <div className="post">
@@ -9,3 +11,7 @@ export const PostCard = ({ post }) => (
       </div>
     </div>
 );
+
+PostCard.propTypes = {
+  post: P.object.isRequired
+}

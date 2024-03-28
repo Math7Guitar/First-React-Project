@@ -4,6 +4,7 @@ import { Component } from 'react';
 import { loadPosts } from '../../utils/load-posts';
 import { Posts } from '../../components/Posts';
 import { Button } from '../../components/Button';
+import { SearchBar } from '../../components/SearchBar';
 
 export class Home extends Component {
 
@@ -65,7 +66,7 @@ export class Home extends Component {
     
     return (
       <section className="container">
-        <input type="search" className="search" onChange={ (e) => this.handleChange(e.target.value) } value={ (pS) => { return { search: pS.search } } } placeholder='Search' />
+        <SearchBar method={ this.handleChange }/>
         <Posts posts={ posts }/>
         <Button text={ "Anterior" } method={ this.previousPage }/>
         <Button text={ "Proxima" } method={ this.nextPage }/>
